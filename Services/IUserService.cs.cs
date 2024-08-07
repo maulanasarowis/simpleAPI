@@ -6,8 +6,8 @@ namespace simpleAPI.Services
     {
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task<User?> GetUserByIdAsync(int id);
-        Task AddUserAsync(User user);
-        Task UpdateUserAsync(User user);
+        Task AddUserAsync(User user, string password);
+        Task UpdateUserAsync(User user, string password);
         Task DeleteUserAsync(int id);
     }
 }

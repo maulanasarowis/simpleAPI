@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace simpleAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("simpleAPI/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -39,35 +39,23 @@ namespace simpleAPI.Controllers
             return Ok(user);
         }
 
-        // POST: api/Users
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult> AddUser([FromBody] User user, [FromQuery] string password)
         {
-            await _userService.AddUserAsync(user);
+            if (user == null || string.IsNullOrEmpty(password))
+                return BadRequest("User data or password is missing.");
+
+            await _userService.AddUserAsync(user, password);
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
-        // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<ActionResult> UpdateUser(int id, [FromBody] User user, [FromQuery] string password)
         {
-            if (id != user.Id)
-            {
-                return BadRequest();
-            }
+            if (user == null || id != user.Id)
+                return BadRequest("User data is invalid.");
 
-            var existingUser = await _userService.GetUserByIdAsync(id);
-            if (existingUser == null)
-            {
-                return NotFound();
-            }
-
-            existingUser.Username = user.Username;
-            existingUser.Password = user.Password;
-            existingUser.Role = user.Role;
-
-            await _userService.UpdateUserAsync(existingUser);
-
+            await _userService.UpdateUserAsync(user, password);
             return NoContent();
         }
 

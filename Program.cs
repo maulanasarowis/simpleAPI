@@ -18,6 +18,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add PasswordService explicitly
+builder.Services.AddScoped<PasswordService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

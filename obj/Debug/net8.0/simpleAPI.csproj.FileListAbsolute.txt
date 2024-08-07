@@ -104,3 +104,4 @@ C:\Users\itd44\source\repos\simpleAPI\simpleApi\obj\Debug\net8.0\simpleAPI.pdb
 C:\Users\itd44\source\repos\simpleAPI\simpleApi\obj\Debug\net8.0\simpleAPI.genruntimeconfig.cache
 C:\Users\itd44\source\repos\simpleAPI\simpleApi\obj\Debug\net8.0\ref\simpleAPI.dll
 C:\Users\itd44\source\repos\simpleAPI\simpleAPI\obj\Debug\net8.0\simpleAPI.sourcelink.json
+C:\Users\itd44\source\repos\simpleAPI\simpleAPI\bin\Debug\net8.0\BCrypt.Net-Next.dll
